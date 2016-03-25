@@ -11,8 +11,8 @@ defmodule TagitApi.EntryController do
   end
 
   def show(conn, %{"id" => id}) do
-    entry = Repo.get!(Entry, id)
-    render(conn, "show.json", entry: entry)
+    entry = preload(Entry, [:user]) |> Repo.get!(id)
+    render(conn, EntryView, :show, data: entry)
   end
 
 end
