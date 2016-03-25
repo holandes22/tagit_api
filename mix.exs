@@ -37,6 +37,7 @@ defmodule TagitApi.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.9"},
      {:ja_serializer, "~> 0.8.1"},
+     {:valid_field, "~> 0.3.0", only: :test},
      {:cowboy, "~> 1.0"}]
   end
 

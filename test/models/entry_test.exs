@@ -1,18 +1,17 @@
 defmodule TagitApi.EntryTest do
   use TagitApi.ModelCase
+  import ValidField
 
   alias TagitApi.Entry
 
-  @valid_attrs %{archived: true, is_favourite: true, link: "some content", notes: "some content", ranking: 42}
-  @invalid_attrs %{}
+  @valid_tags ~w(ember addon)
+  @invalid_tags ~w(too long more than five tags)
 
-  test "changeset with valid attributes" do
-    changeset = Entry.changeset(%Entry{}, @valid_attrs)
-    assert changeset.valid?
+  test "validations" do
+    %Entry{}
+    |> with_changeset()
+    |> assert_field(:tags, [@valid_tags], [@invalid_tags, nil])
+    |> assert_field(:link, ["blah"], [nil])
   end
 
-  test "changeset with invalid attributes" do
-    changeset = Entry.changeset(%Entry{}, @invalid_attrs)
-    refute changeset.valid?
-  end
 end
