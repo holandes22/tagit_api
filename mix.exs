@@ -38,6 +38,7 @@ defmodule TagitApi.Mixfile do
      {:gettext, "~> 0.9"},
      {:ja_serializer, "~> 0.8.1"},
      {:valid_field, "~> 0.3.0", only: :test},
+     {:ex_machina, "~> 0.6.1", only: :test},
      {:cowboy, "~> 1.0"}]
   end
 
